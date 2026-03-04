@@ -1,9 +1,6 @@
-sudo ssh -o StrictHostChecking=no -i test.pem roo@kube_master_ip
-
-sudo docker build -t docker.io/rachanayelmame8/Jenkins .
-sudo docker login -u rachanayelmame8 -p $dockerpasswd
-sudo docker push docker.io/rachanayelmame8jenkins
-sudo docker rmi docker.io/rachanayelmame/Jenkins
-sudo ssh -o  StrictHostChecking=no -i test.pem root@<> git clone https://github.com/yelmame/docker-jenkins.git /root/Jenkins
-sudo ssh -o  StrictHostChecking=no -i test.pem root@<> kubectl create -f /root/Jenkins/service.yaml -n Jenkins
-ssh -o  StrictHostChecking=no -i test.pem root@<> kubectl create -f /root/Jenkins/Deployment.yaml -n Jenkins
+docker build -t docker.io/rachanayelmame8/jenkins .
+ docker login -u rachanayelmame8 -p $dockerpasswd
+docker push docker.io/rachanayelmame8/jenkins
+docker rmi docker.io/rachanayelmame8/jenkins
+ssh -o  StrictHostKeyChecking=no -i /var/lib/jenkins/test.pem root@<kube-master-ip> git clone "https://github.com/yelmame/kubernetes-with-jenkins"
+ssh -o  StrictHostKeyChecking=no -i /var/lib/jenkins/test.pem root@<kube-master-ip> kubectl apply -f kubernetes-with-jenkins
