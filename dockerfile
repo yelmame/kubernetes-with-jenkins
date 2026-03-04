@@ -8,4 +8,5 @@ COPY index.html /usr/share/nginx/html/index.html
 EXPOSE 80
 
 # Run Nginx in the foreground 
+
 CMD ["nginx", "-g", "daemon off;"] 
